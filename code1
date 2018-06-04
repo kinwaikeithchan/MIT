@@ -11,3 +11,16 @@ progress = function(i,I,freq=10,t0=NA){
       }
    }
 }
+
+lambdaHat12 = function(L){
+	m = length(L)
+	L1 = mean(L)
+	L2 = mean(L^2)
+
+	a = m/(m-1)*L1
+	b = m^2/(m-1)^2*L2
+	Delta = max(0,b-2*a^2)
+	out = (a+c(-1,+1)*sqrt(Delta))/2
+	names(out) = c("lambda1", "lambda2")
+	out
+}
