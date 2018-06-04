@@ -1,0 +1,25 @@
+
+momentsLambda = function(L,k){
+	m = length(L)
+	L1 = mean(L)
+	L2 = mean(L^2)
+	E1_lambda = m*L1/(m-1)/k
+	MoM = m^2/(2*k*(m-1)^2)*(L2-(k+2)/k*L1^2) 
+	UMoM = m^2/(2*k^2*(m-1)^2*(m-2))*(((m-1)*k+2)*L2 - (m-1)*(k+2)*L1^2)   #unbisaed
+	var_lambda = max(0,MoM)
+	c("E(lambda)"=E1_lambda, "Var(lambda)"=var_lambda)
+}
+get.LambdaHat = function(L,k){
+	LambdaHat = lambdaHat = Lj = rep(NA,k)
+	for(j in 1:k){
+		Lj[j] = mean(L^j)
+	}
+	LambdaHat[1] = Lj[1]/(1-1/m)
+	if(k>1){
+		for(r in 2:k){
+			LambdaHat[r] = (  (1-1/m)^(-r)*Lj[r]/(factorial(r-1)*2^(r-1)) - 
+							sum(1/(1-1/m)^((r-1):1)*Lj[(r-1):1]*LambdaHat[1:(r-1)]/2^((r-1):1)/factorial((r-1):1))  )
+		}
+	}
+	LambdaHat	
+}
