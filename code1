@@ -7,17 +7,7 @@ progress = function(i,I,freq=10,t0=NA){
          cat("\n",paste(rep("=",60),collapse=""));cat("\n")
          cat(paste("   i=",i," at ",Sys.time(),"\n",sep="")) 
          cat(paste("   Time Remaining: ",as.numeric((Sys.time()-t0)/i*(I-i),units="hours")," hours",sep=""))
-         cat("\n",paste(rep("=",60),collapse="..."))
-         for(i in 1:10){print(".")}
+         cat("\n",paste(rep("=",60),collapse=""))
       }
    }
 }
-
-
-
-
-
-
-
-
-
